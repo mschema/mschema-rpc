@@ -1,0 +1,17 @@
+{
+  "name": "mschema-rpc",
+  "repo": "mschema/mschema-rpc",
+  "description": "Minimalistic Remote Procedural Call library using mschema validation for remote method's input and output.",
+  "keywords": ["rpc", "remote", "method", "schema", "mschema", "validator"],
+  "version": "0.5.0",
+  "keywords": [],
+  "dependencies": {
+    "mschema/mschema": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

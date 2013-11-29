@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <script src="../build/build.js"></script>
+  </head>
+  <body>
+    <h1>example</h1>
+    <textarea cols="80" rows="10" id="result"></textarea>
+    
+    <script type="text/javascript">
+      var rpc = require('mschema-rpc');
+
+      var fireSchema = {
+        "description": "fires missle",
+        "input": {
+          "name": "string",
+            "power": {
+              "type": "string",
+              "enum": ["high", "medium", "low"]
+            },
+            "warheads": {
+              "type": "number",
+              "min": 1,
+              "max": 8
+            }
+          },
+        "output": {
+          "result": "string"
+        }
+      };
+
+      function fireFn (input, callback) {
+        callback(null, 'weapon fired');
+      }
+
+      var data = {
+        "name": "small missle",
+        "power": "low",
+        "warheads": 8
+      };
+
+      rpc.invoke(data, fireFn, fireSchema, function(errors, result) {
+        alert('successfully executed method');
+        document.getElementById('result').innerHTML = result;
+        console.log('errors', errors);
+        console.log('result', result);
+      });
+
+    </script>
+
+  </body>
+</html>
