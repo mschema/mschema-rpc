@@ -3,7 +3,7 @@
   "repo": "mschema/mschema-rpc",
   "description": "Minimalistic Remote Procedural Call library using mschema validation for remote method's input and output.",
   "keywords": ["rpc", "remote", "method", "schema", "mschema", "validator"],
-  "version": "0.5.0",
+  "version": "0.5.1",
   "keywords": [],
   "dependencies": {
     "mschema/mschema": "*"
