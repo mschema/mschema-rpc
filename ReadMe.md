@@ -1,5 +1,7 @@
 # mschema-rpc
 
+<img src="https://travis-ci.org/mschema/mschema-rpc.svg?branch=master"/>
+
 Minimalistic [Remote Procedural Call](http://en.wikipedia.org/wiki/Remote_procedure_call) library using [mschema](http://mschema.org) validation for remote method's input and output.
 
 ## Features
