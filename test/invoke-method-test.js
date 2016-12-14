@@ -41,9 +41,6 @@ test("rpc.invoke - valid data - with mschema", function (t) {
   };
 
   rpc.invoke(data, fireFn, fireSchema, function(errors, result) {
-    
-    console.log(errors);
-    
     t.ok(true, 'weapon fired')
     t.end();
   });
@@ -82,13 +79,14 @@ test("rpc.invoke - invalid data - with mschema", function (t) {
   };
 
   rpc.invoke(data, fireFn, fireSchema, function(err, result) {
-    t.type(result, Array);
-    t.equal(result.length, 2);
-    t.equal(result[0].property, "power");
-    t.equal(result[0].constraint, "enum");
-    t.similar(result[0].expected, ["high", "medium", "low"]);
-    t.equal(result[0].actual, "unknown");
-    t.equal(result[0].value, "unknown");
+    t.type(err, 'object');
+    t.type(result.errors, Array);
+    t.equal(result.errors.length, 2);
+    t.equal(result.errors[0].property, "power");
+    t.equal(result.errors[0].constraint, "enum");
+    t.similar(result.errors[0].expected, ["high", "medium", "low"]);
+    t.equal(result.errors[0].actual, "unknown");
+    t.equal(result.errors[0].value, "unknown");
     t.ok(true, 'weapon not fired')
     t.end();
   });
@@ -122,7 +120,6 @@ test("rpc.invoke - invalid data - with mschema", function (t) {
   };
 
   rpc.invoke(data, fireFn, fireSchema, function(err, result) {
-    console.log(err, result)
     t.type(err, "object");
     t.ok(true, 'weapon not fired')
     t.end();

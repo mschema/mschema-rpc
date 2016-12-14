@@ -5,7 +5,11 @@ var invoke = rpc.invoke = function (data, method, schema, callback) {
   // validate incoming input data based on schema
   var validate = mschema.validate(data, schema.input, { strict: false });
   if (!validate.valid) {
-    return callback(new Error('Validation error: ' + JSON.stringify(validate.errors, true, 2)), validate.errors);
+    var errorJSON = {};
+    errorJSON.status = "error";
+    errorJSON.errors = validate.errors;
+    var error = JSON.stringify(errorJSON, true, 2);
+    return callback(new Error(error), errorJSON);
   }
   // execute remote method
   method.call(self, data, function (err, result) {
